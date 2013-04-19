@@ -17,7 +17,21 @@ module Spree
         bcash_item
       end
 
-      ::Bcash::Package.create(items)
+      ::Bcash::Package.create(items, tax(order))
     end
+
+    private
+
+    def tax(order)
+      taxes = 0
+
+      order.adjustments.eligible.each do |adjustment|
+        next if adjustment.originator_type == 'Spree::TaxRate' && adjustment.amount == 0
+        taxes += adjustment.amount
+      end
+
+      taxes
+    end
+
   end
 end
