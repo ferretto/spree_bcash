@@ -1,5 +1,5 @@
 <br />
 <%if @order.payment_method.instance_of? Spree::PaymentMethod::BcashMethod%>
 	Clique no botão abaixo para fazer seu pagamento usando o Bcash
-	<%= Bcash::Payment.new(@order.payment_method.package(@order.payment), {:email_loja => Spree::Order.bcash_payment_method.preferred_email}).html%>	
+	<%= Bcash::Payment.new(@order.payment_method.package(@order.payment), {:email_loja => Spree::Order.bcash_payment_method.preferred_email, :id_pedido => @order.number}).html%>	
 <%end%>
