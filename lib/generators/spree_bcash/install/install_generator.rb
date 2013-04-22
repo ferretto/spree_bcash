@@ -1,4 +1,4 @@
-module Bcash
+module SpreeBcash
   module Generators
     class InstallGenerator < Rails::Generators::Base
 
