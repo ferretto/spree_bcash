@@ -1,0 +1,9 @@
+<fieldset data-hook="credicard">
+	<legend>Bcash</legend>
+
+	<% if payment.order.bcash_notification.nil?%>
+		<p>Não efetuado pagamento até o momento pelo site do Bcash</p>
+	<% else %>
+		<%= render partial: 'spree/admin/payments/source_views/transaction_bcash_notification', locals: {payment: payment.order.bcash_notification}%>
+	<% end %>
+</fieldset>
