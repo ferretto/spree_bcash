@@ -1,8 +1,10 @@
-<%if @order.payment_method.instance_of? Spree::PaymentMethod::BcashMethod%>
-	<%if @order.payment.completed?%>
+<% payment_method = Spree::PaymentMethod.find(@order.payments.first.payment_method_id) %>
+
+<%if payment_method.instance_of? Spree::PaymentMethod::BcashMethod%>
+	<%if @order.payments.first.completed?%>
 		Seu pagamento foi processado com sucesso!
 	<%else%>
 		Clique no botão abaixo para fazer seu pagamento usando o Bcash
-		<%= Bcash::Payment.new(@order.payment_method.package(@order.payment), Spree::Order.options_for_bcash(@order, request)).html%>	
+		<%= Bcash::Payment.new(payment_method.package(@order.payments.first), Spree::Order.options_for_bcash(@order, request)).html%>	
 	<%end%>
 <%end%>
