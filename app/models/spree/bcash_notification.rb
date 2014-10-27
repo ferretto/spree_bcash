@@ -2,7 +2,6 @@ module Spree
   class BcashNotification < ActiveRecord::Base
     belongs_to :order
 
-    attr_protected
 
     def self.create_from_params(params)
       notification = ::Bcash::Notification.new(params)
