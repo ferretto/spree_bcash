@@ -1,6 +1,6 @@
 module Spree
 	class PaymentMethod::BcashMethod < PaymentMethod
-		attr_protected
+
 		preference :email, :string
 
     attr_accessor :order_id
